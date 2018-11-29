@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/lowester/complexModule"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.author             = { "lowester" => "lowester@gmail.com" }
+  s.author             = { "lowester" => "1434147479@qq.com" }
 
 if ENV['pipeline']
   pipeline = ENV['pipeline']

@@ -29,63 +29,19 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/lowester/complexModule"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-
-
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Licensing your code is important. See http://choosealicense.com for more info.
-  #  CocoaPods will detect a license file if there is a named LICENSE*
-  #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
-  #
-
-  #s.license      = "MIT (example)"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-
-
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors are extracted from the SCM log. E.g. $ git log. CocoaPods also
-  #  accepts just a name if you'd rather not provide an email address.
-  #
-  #  Specify a social_media_url where others can refer to, for example a twitter
-  #  profile URL.
-  #
-
   s.author             = { "lowester" => "lowester@gmail.com" }
-  # Or just: s.author    = "lowester"
-  # s.authors            = { "lowester" => "lowester@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/lowester"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
-
-  # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
-
-  #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
-  # s.watchos.deployment_target = "2.0"
-  # s.tvos.deployment_target = "9.0"
-
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the location from where the source should be retrieved.
-  #  Supports git, hg, bzr, svn and HTTP.
-  #
 
 if ENV['pipeline']
   pipeline = ENV['pipeline']
+end
+
+if pipeline
   s.source       = { :git => "https://github.com/lowester/complexModule.git", :tag => "#{pipeline}.#{s.version}" }
 else
   s.source       = { :git => "https://github.com/lowester/complexModule.git", :tag => "#{s.version}" }
 end
+
 
 
   s.ios.deployment_target = '8.0'
@@ -121,9 +77,8 @@ end
 
   end
   
-if ENV['pipeline']
-  pipeline = ENV['use_tag']
-  s.default_subspecs = 'core', '#{pipeline}'
+if pipeline
+  s.default_subspecs = 'core', "#{pipeline}"
 else
   s.default_subspecs = 'core'
 end
